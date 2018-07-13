@@ -47,7 +47,7 @@ pipeline {
             "files": [
               {
                 "pattern": "calcul",
-                "target": "Grotadmorv/rondoudou${BUILD_NUMBER}"
+                "target": "Grotadmorv/rondoudou${BUILD_NUMBER}.jar"
               }
             ]
           }"""
