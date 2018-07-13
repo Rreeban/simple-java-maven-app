@@ -15,10 +15,10 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  <properties>
+  <!-- properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <sonar.langage>java</sonar.langage>
-  </properties>
+  </properties -->
   <build>
     <plugins>
       <plugin>
