@@ -20,7 +20,11 @@ pipeline {
       
       steps {
         
-        sh "mvn clean verify sonar:sonar -Dsonar.projectName=test -Dsonar.projectKey=test -Dsonar.projectVersion=${BUILD_NUMBER}";
+        withSonarQubeEnv('SonarQube') {
+        // requires SonarQube Scanner for Maven 3.2+
+        sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
+        
+        //sh "mvn clean verify sonar:sonar -Dsonar.projectName=test -Dsonar.projectKey=test -Dsonar.projectVersion=${BUILD_NUMBER}";
     
       }
       
