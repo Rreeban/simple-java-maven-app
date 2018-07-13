@@ -1,24 +1,64 @@
 pipeline {
     
-    agent {
-      label 'Linux'
-    }
+  agent {
+    label 'Linux'
+  }
 
-    stages {
-        stage('Build') {
-            steps {
-                sh 'mvn -B -DskipTests clean package'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-        }
+  stages {
+  
+    stage('Build') {
+    
+      steps {
+      
+        sh 'mvn -B -DskipTests clean package'
+        
+      }
+      
     }
+    
+    stage('Test') {
+    
+      steps {
+      
+        sh 'mvn test'
+        
+      }
+      
+      post {
+      
+        always {
+        
+          junit 'target/surefire-reports/*.xml'
+          
+        }
+        
+      }
+      
+    }
+    
+    stage ('Publication du binaire') {
+
+      steps {
+
+        script {
+
+          def server = Artifactory.server('Artifactory')
+          def uploadSpec = """{
+            "files": [
+              {
+                "pattern": "calcul",
+                "target": "Grotadmorv/rondoudou${BUILD_NUMBER}"
+              }
+            ]
+          }"""
+          server.upload(uploadSpec)
+
+        }
+
+      }
+
+    }
+    
+  }
+  
 }
