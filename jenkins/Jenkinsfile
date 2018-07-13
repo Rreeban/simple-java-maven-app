@@ -16,6 +16,19 @@ pipeline {
       
     }
     
+    stage('analyse statique') {
+      
+      steps {
+        
+        sh 'mvn clean verify sonar:sonar
+        -Dsonar.projectName=bonjour
+        -Dsonar.projectKey=SAS:blizzaroi
+        -Dsonar.projectVersion=$BUILD_NUMBER';
+    
+      }
+      
+    }
+    
     stage('Test') {
     
       steps {
