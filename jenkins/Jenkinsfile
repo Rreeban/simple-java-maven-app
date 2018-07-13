@@ -20,7 +20,7 @@ pipeline {
       
       steps {
         
-        sh "mvn clean verify sonar:sonar -Dsonar.projectName=bonjour -Dsonar.projectKey=bonjour -Dsonar.projectVersion=${BUILD_NUMBER}";
+        sh "mvn clean verify sonar:sonar -Dsonar.projectName=bonjour -Dsonar.projectKey=SAS:blizzaroi -Dsonar.projectVersion=${BUILD_NUMBER}";
     
       }
       
