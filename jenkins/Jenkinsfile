@@ -1,5 +1,5 @@
 pipeline {
-    
+
   agent {
     label 'Linux'
   }
@@ -46,7 +46,7 @@ pipeline {
           def uploadSpec = """{
             "files": [
               {
-                "pattern": "calcul",
+                "pattern": "target/my-app*",
                 "target": "Grotadmorv/rondoudou${BUILD_NUMBER}.jar"
               }
             ]
